@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+<% let i = 0 %>
+<% routes.forEach((r) => { %>
+    <% i += 1 %>   
+    <a href="#<%= r.name %>"> <%= i %>. <%= r.name %> </a><br>
+    <a href="/routes/<%= r._id %> ">Details</a><br><br>
+<% }) %>
+
+
+<a href="/routes/new">Create New</a><br><br>
+<%- include('../partials/footer') %>
+

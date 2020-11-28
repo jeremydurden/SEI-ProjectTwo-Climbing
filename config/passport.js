@@ -28,11 +28,11 @@ passport.use(new GoogleStrategy({
     })
   }
 ));
-
+//called everytime a request comes from our server
 passport.serializeUser(function(user, done) {
-  done(null, user.id);
+  done(null, user.id); //storing our id in our session
 });
-
+//this is where we find the document to attach to req.user
 passport.deserializeUser(function(id, done) {
 // Find your User, using your model, and then call done(err, whateverYourUserIsCalled)
   User.findById(id, function(err, user){
