@@ -29,6 +29,8 @@ function index(req, res){
 
 function show(req, res){
     Route.findById(req.params.id, function(err, routes){
+        
         res.render('routes/show', {title: routes.name , routes});
     });
 }
+

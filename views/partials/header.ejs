@@ -10,11 +10,12 @@
 <body>
   <nav>
     <% if (user) { %>
-		<div>Welcome, <%= user.name %> </div>
+        <div>Welcome, <%= user.name %> </div>
+        <a href="/users/<%= user._id %>">Profile Page</a>
 		<a href="/logout"><i class="material-icons left"></i>Log Out</a><br>
-        <a href="/index">Back to Main</a><br>
+        <% } %>
+        <a href="/index">Back to Home Page</a><br>
         <a href="/routes/">All Routes</a>
-    <% } %>
   </nav>
   <main>
       <div id="top"></div>
