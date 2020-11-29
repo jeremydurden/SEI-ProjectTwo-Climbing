@@ -2,8 +2,7 @@
 <% let i = 0 %>
 <% routes.forEach((r) => { %>
     <% i += 1 %>   
-    <a href="#<%= r.name %>"> <%= i %>. <%= r.name %> </a><br>
-    <a href="/routes/<%= r._id %> ">Details</a><br><br>
+    <a href="/routes/<%= r._id %> "><%= i %>. <%= r.name %> </a><br><br>
 <% }) %>
 
 

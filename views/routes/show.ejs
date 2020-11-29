@@ -7,10 +7,52 @@
     <div>Difficulty: <%= routes.difficultyRating %></div><br><br>
     <div>First Ascent: <%= routes.firstAscent %></div><br><br>
     <div>Description: <%= routes.description %></div><br><br>
-    <a href="#top">back to the top</a><br>
 </section>
 
 
 
+<% if (routes.comment.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Comment</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% routes.comment.forEach(function(c) { %>
+          <tr>
+            <td><%= c.createdAt.toLocaleDateString() %></td>
+            <td><%= c.text %></td>
+            <td><%= c.rating %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h5>No Comments Yet</h5>
+  <% } %>
 
+
+
+<br><br><h3>Add a Comment</h3>
+<form id="add-review-form" method="POST"
+  action="/routes/<%= routes._id %>/comments">
+  <label>Comment:</label>
+  <textarea name="text"></textarea>
+  <label>Rating:</label>
+  <select name="rating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+  <input type="submit" value="Add Review">
+</form>
+
+
+
+<a href="#top">back to the top</a><br>
 <%- include('../partials/footer') %>

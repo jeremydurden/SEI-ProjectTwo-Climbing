@@ -11,7 +11,8 @@ const commentSchema = new mongoose.Schema({
         max: 5,
         default: 5
     }
-
+}, {
+    timestamps: true
 })
 
 const notesSchema = new mongoose.Schema({

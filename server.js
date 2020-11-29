@@ -9,6 +9,7 @@ var methodOverride = require('method-override');
 
 var indexRouter = require('./routes/index');
 var routesRouter = require('./routes/routes')
+var commentsRouter = require('./routes/comments');
 
 // load the env vars
 require('dotenv').config();
@@ -54,7 +55,8 @@ app.use(function (req, res, next) {
 
 // mount all routes with appropriate base paths
 app.use('/', indexRouter);
-app.use('/', routesRouter)
+app.use('/', routesRouter);
+app.use('/', commentsRouter);
 
 // invalid request, send 404 page
 app.use(function(req, res) {
