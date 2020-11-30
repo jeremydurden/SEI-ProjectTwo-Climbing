@@ -9,5 +9,9 @@ function isLoggedIn(req, res, next) {
 
 router.post('/routes/:id/comments', isLoggedIn, commentsCtrl.create);
 
+router.put('/comments/:id', isLoggedIn, commentsCtrl.update)
+
+router.delete('/comments/:id', isLoggedIn, commentsCtrl.delete)
+
 
 module.exports = router;

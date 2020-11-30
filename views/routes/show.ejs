@@ -1,4 +1,6 @@
 <%- include('../partials/header') %>
+<a href="" style="font-size: small;">add to wish list</a><br>
+<a href="" style="font-size: small;">add to already climbed</a>
 
 
 <section class="adminPreview">
@@ -25,9 +27,27 @@
         <% routes.comment.forEach(function(c) { %>
           <tr>
             <td><%= c.createdAt.toLocaleDateString() %></td>
-            <td><%= c.text %></td>
+            <td style="width: 500px; text-align: center;"><%= c.text %></td>
             <td><%= c.rating %> jugs </td>
             <td><%= c.userName %> </td>
+            <% if (user && c.userId.equals(user._id)) { %>
+              <td><form action="/comments/<%= c._id %>?_method=PUT" method="POST">
+                <label>Comment:</label>
+                <textarea name="text"></textarea>
+                <label>Rating:</label>
+                <select name="rating">
+                  <option value="5">5</option>
+                  <option value="4">4</option>
+                  <option value="3">3</option>
+                  <option value="2">2</option>
+                  <option value="1">1</option>
+                </select>
+                <input type="hidden" name="userName" value="<%= user.name %> ">
+                <input type="submit" value="update comment"></form></td>
+              <td><form action="/comments/<%= c.id %>?_method=DELETE"
+                class="delete-form" method="POST">
+                <button type="submit">X</button></form></td>
+              <% } %>
           </tr>
         <% }); %>
       </tbody>
@@ -46,17 +66,16 @@
   <textarea name="text"></textarea>
   <label>Rating:</label>
   <select name="rating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
     <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
   </select>
   <input type="hidden" name="userName" value="<%= user.name %> ">
   <input type="submit" value="Add Review">
 </form>
 <% } %>
-
 
 
 <a href="#top">back to the top</a><br>
