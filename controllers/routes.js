@@ -33,7 +33,8 @@ function index(req, res){
 
 function show(req, res){
     Route.findById(req.params.id, function(err, routes){
-        
+        console.log(routes.image, 'this is image')
+        console.log(routes.name, "this is name")
         res.render('routes/show', {title: routes.name , routes});
     });
 }

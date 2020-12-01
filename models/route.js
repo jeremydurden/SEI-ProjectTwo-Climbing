@@ -22,6 +22,7 @@ const notesSchema = new mongoose.Schema({
 
 const routeSchema = new mongoose.Schema({
     name: String,
+    image: String,
     location: String,
     style: String,
     difficultyRating: String,

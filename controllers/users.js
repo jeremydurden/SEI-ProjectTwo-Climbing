@@ -1,6 +1,6 @@
 const User = require('../models/user')
 const Route = require('../models/route')
-const { find } = require('../models/user')
+
 
 
 module.exports = {
