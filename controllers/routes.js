@@ -15,9 +15,6 @@ function newRoute(req, res){
 
 function create(req, res){
     Route.create(req.body, function(err, routes){
-        console.log('why am I firing?')
-        console.log(req.body, 'this is req.body')
-        console.log(req.params.id, 'this is req.params.id')
         if(err){
             res.render('routes/new', {title: 'Admin Create Page'})
         }
@@ -27,14 +24,12 @@ function create(req, res){
 
 function index(req, res){
     Route.find({}, function(err, routes){
-        res.render('routes/index', {title: 'Route Listing', routes})
+        res.render('routes/index', {title: '', routes})
     })
 }
 
 function show(req, res){
     Route.findById(req.params.id, function(err, routes){
-        console.log(routes.image, 'this is image')
-        console.log(routes.name, "this is name")
         res.render('routes/show', {title: routes.name , routes});
     });
 }

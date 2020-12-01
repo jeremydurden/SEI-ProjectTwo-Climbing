@@ -31,7 +31,7 @@ router.get('/logout', function(req, res){
 
 
 router.get('/index', function(req, res, next) {
-  res.render('index', { title: 'Welcome' });
+  res.render('index', { title: "" });
 });
 
 module.exports = router;

@@ -18,9 +18,6 @@ function create(req, res){
 
 function update(req, res) {
     Route.findOne({'comment._id': req.params.id}, function(err, routes) {
-        console.log('I am firing.............')
-        console.log(req.params.id, 'I am req.params.id ******************')
-        console.log(routes, 'this is routes .................')
       const commentSubdoc = routes.comment.id(req.params.id);
       if (!commentSubdoc.userId.equals(req.user._id)) return res.redirect(`/routes/${routes._id}`);
       commentSubdoc.text = req.body.text;

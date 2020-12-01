@@ -5,57 +5,47 @@
 <form method="POST" action="/routes/<%= routes._id %>">
 <button type="submit">Wish List</button></form>
 
-<img id="showImage" src="<%= routes.image %> " alt="">
+<img id="showImg" src="<%= routes.image %> " alt="">
 
-<section class="adminPreview">
-    <div>Location: <%= routes.location %></div><br><br>
-    <div>Style: <%= routes.style %></div><br><br>
-    <div>Difficulty: <%= routes.difficultyRating %></div><br><br>
-    <div>First Ascent: <%= routes.firstAscent %></div><br><br>
-    <div>Description: <%= routes.description %></div><br><br>
-</section>
+  <section class="container1">
+    <div class="header1">Location:</div> <div class="content"> <%= routes.location %></div>
+    <div class="header2">Style:</div> <div class="content"> <%= routes.style %></div>
+    <div class="header3">Difficulty:</div> <div class="content"> <%= routes.difficultyRating %></div>
+    <div class="header4">First Ascent:</div> <div class="content"> <%= routes.firstAscent %></div>
+    <div class="header5">Description:</div> <div class="content"> <%= routes.description %></div>
+  </section>
 
 
 
 <% if (routes.comment.length) { %>
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Comment</th>
-          <th>Rating</th>
-          <th>User</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% routes.comment.forEach(function(c) { %>
-          <tr>
-            <td><%= c.createdAt.toLocaleDateString() %></td>
-            <td style="width: 500px; text-align: center;"><%= c.text %></td>
-            <td><%= c.rating %> jugs </td>
-            <td><%= c.userName %> </td>
-            <% if (user && c.userId.equals(user._id)) { %>
-              <td><form action="/comments/<%= c._id %>?_method=PUT" method="POST">
-                <label>Comment:</label>
-                <textarea name="text"></textarea>
-                <label>Rating:</label>
-                <select name="rating">
-                  <option value="5">5</option>
-                  <option value="4">4</option>
-                  <option value="3">3</option>
-                  <option value="2">2</option>
-                  <option value="1">1</option>
-                </select>
-                <input type="hidden" name="userName" value="<%= user.name %> ">
-                <input type="submit" value="update comment"></form></td>
-              <td><form action="/comments/<%= c.id %>?_method=DELETE"
-                class="delete-form" method="POST">
-                <button type="submit">X</button></form></td>
+    <div class="container2">
+      <div class="headerA">Date</div>
+      <div class="headerB">Comment</div>
+      <div class="headerC">Rating</div>
+      <div class="headerD">User</div>
+  <% routes.comment.forEach(function(c) { %>
+      <div class="contentA"><%= c.createdAt.toLocaleDateString() %></div>
+      <div class="contentB"><%= c.text %></div>
+      <div class="contentC"><%= c.rating %> jugs </div>
+      <div class="contentD"><%= c.userName %> </div>
+  <% if (user && c.userId.equals(user._id)) { %>
+      <div><form action="/comments/<%= c._id %>?_method=PUT" method="POST"></div>
+      <div class="editA"><textarea name="text" placeholder="Edit Your Comment"></textarea></div>
+      <div class="editB">Rating:
+      <select name="rating">
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+      </select></div>
+      <div><input type="hidden" name="userName" value="<%= user.name %> "></div>
+      <div class="editC"><input type="submit" value="update comment"></div></form>
+      <div class="delete"><form action="/comments/<%= c.id %>?_method=DELETE" class="delete-form" method="POST">
+      <button type="submit">X</button></form></div>
+    </div>
               <% } %>
-          </tr>
         <% }); %>
-      </tbody>
-    </table>
   <% } else { %>
     <h5>No Comments Yet</h5>
   <% } if (!user) { %>
