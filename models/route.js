@@ -29,8 +29,8 @@ const routeSchema = new mongoose.Schema({
     description: String,
     comment: [commentSchema],
     userNotes: [notesSchema],
-    routesClimbed: [ObjectId],
-    wishList: [ObjectId]
+    routesClimbed: [{type: ObjectId, ref: 'User'}],
+    wishList: [{type: ObjectId, ref: 'User'}]
 })
 
 module.exports = mongoose.model('Route', routeSchema)

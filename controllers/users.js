@@ -1,4 +1,7 @@
 const User = require('../models/user')
+const Route = require('../models/route')
+const { find } = require('../models/user')
+
 
 module.exports = {
     show
@@ -12,3 +15,5 @@ function show(req, res){
         res.render('users/show', {title: user.name , user});
     });
 }
+
+

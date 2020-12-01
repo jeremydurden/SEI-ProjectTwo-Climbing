@@ -10,4 +10,6 @@ router.get('/routes', routesCtrl.index);
 
 router.get('/routes/:id', routesCtrl.show);
 
+router.post('/routes/:id', routesCtrl.wishList)
+
 module.exports = router;

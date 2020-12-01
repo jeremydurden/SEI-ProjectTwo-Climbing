@@ -1,6 +1,10 @@
 <%- include('../partials/header') %>
-<a href="" style="font-size: small;">add to wish list</a><br>
-<a href="" style="font-size: small;">add to already climbed</a>
+
+
+
+<form method="POST" action="/routes/<%= routes._id %>">
+<button type="submit">Wish List</button></form>
+
 
 
 <section class="adminPreview">
