@@ -5,7 +5,7 @@
 A useful web app for creating and saving pages dedicated to specific routes in climbing areas.  Users can comment on routes and view other user's comments.  
 
 
-#### technologies used : JavaScript, HTML, and CSS
+#### technologies used : JavaScript, HTML, and CSS, Node.JS, Express.JS, MongoDB
 
 
 ### Getting started: 
