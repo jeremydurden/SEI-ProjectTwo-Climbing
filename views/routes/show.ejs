@@ -1,0 +1,76 @@
+<%- include('../partials/header') %>
+
+
+
+<form method="POST" action="/routes/<%= routes._id %>">
+<button type="submit">Wish List</button></form>
+
+<img id="showImg" src="<%= routes.image %> " alt="">
+
+  <section class="container1">
+    <div class="header1">Location:</div> <div class="content"> <%= routes.location %></div>
+    <div class="header2">Style:</div> <div class="content"> <%= routes.style %></div>
+    <div class="header3">Difficulty:</div> <div class="content"> <%= routes.difficultyRating %></div>
+    <div class="header4">First Ascent:</div> <div class="content"> <%= routes.firstAscent %></div>
+    <div class="header5">Description:</div> <div class="content"> <%= routes.description %></div>
+  </section>
+
+
+
+<% if (routes.comment.length) { %>
+    <div class="container2">
+      <div class="headerA">Date</div>
+      <div class="headerB">Comment</div>
+      <div class="headerC">Rating</div>
+      <div class="headerD">User</div>
+  <% routes.comment.forEach(function(c) { %>
+      <div class="contentA"><%= c.createdAt.toLocaleDateString() %></div>
+      <div class="contentB"><%= c.text %></div>
+      <div class="contentC"><%= c.rating %> jugs </div>
+      <div class="contentD"><%= c.userName %> </div>
+  <% if (user && c.userId.equals(user._id)) { %>
+      <div><form action="/comments/<%= c._id %>?_method=PUT" method="POST"></div>
+      <div class="editA"><textarea name="text" placeholder="Edit Your Comment"></textarea></div>
+      <div class="editB">Rating:
+      <select name="rating">
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
+      </select></div>
+      <div><input type="hidden" name="userName" value="<%= user.name %> "></div>
+      <div class="editC"><input type="submit" value="update comment"></div></form>
+      <div class="delete"><form action="/comments/<%= c.id %>?_method=DELETE" class="delete-form" method="POST">
+      <button type="submit">X</button></form></div>
+    </div>
+              <% } %>
+        <% }); %>
+  <% } else { %>
+    <h5>No Comments Yet</h5>
+  <% } if (!user) { %>
+    <h5><a href="/auth/google"><i class="material-icons left"></i>Login to leave a comment</a></h5>
+  <% } %> 
+
+  <% if (user) { %>
+<br><br><h3>Add a Comment</h3>
+<form id="add-review-form" method="POST"
+  action="/routes/<%= routes._id %>/comments">
+  <label>Comment:</label>
+  <textarea name="text"></textarea>
+  <label>Rating:</label>
+  <select name="rating">
+    <option value="5">5</option>
+    <option value="4">4</option>
+    <option value="3">3</option>
+    <option value="2">2</option>
+    <option value="1">1</option>
+  </select>
+  <input type="hidden" name="userName" value="<%= user.name %> ">
+  <input type="submit" value="Add Review">
+</form>
+<% } %>
+
+
+<a href="#top">back to the top</a><br>
+<%- include('../partials/footer') %>

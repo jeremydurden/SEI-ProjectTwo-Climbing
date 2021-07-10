@@ -1,0 +1,34 @@
+<%- include('../partials/header') %>
+
+  </table>
+    <form action="/routes" method="POST">
+    <label>Name:
+        <textarea name="name" cols="30" rows="1"></textarea>
+    </label><br><br>
+    <label>Location:
+        <textarea name="location" cols="30" rows="3"></textarea>
+    </label><br><br>
+    <label>Style:
+        <textarea name="style" cols="30" rows="1"></textarea>
+    </label><br><br>
+    <label>Difficulty:
+        <textarea name="difficultyRating" cols="30" rows="1"></textarea>
+    </label><br><br>
+    <label>First Ascent:
+        <textarea name="firstAscent" cols="30" rows="3"></textarea>
+    </label><br><br>
+    <label>Description:       
+        <textarea name="description" cols="30" rows="10"></textarea>
+    </label><br><br>
+    <label>Image:
+        <textarea name="image" cols="30" rows="1"></textarea>
+    </label><br><br>
+    <input type="submit" value="submit"><br><br>
+
+    <a href="/">home</a>
+
+    </form>    
+    
+    <%- include('../partials/footer') %>
+
+

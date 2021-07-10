@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<% let i = 0 %>
+
+<div class="index">
+    <div class="routeList"><h1>Route Listing</h1></div>
+<% routes.forEach((r) => { %>
+    <div class="routeList"><% i += 1 %>   
+    <a href="/routes/<%= r._id %>"><%= i %>. <%= r.name %> </a></div><br><br>
+<% }) %>
+    <img class="indexImage" src="/images/nepal.jpeg" alt="mountain range">
+    <a href="/routes/new">Create New</a><br><br>
+</div>
+
+<%- include('../partials/footer') %>
+
